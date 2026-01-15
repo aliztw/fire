@@ -571,14 +571,15 @@
                         火之明辨 <br/> <span class="text-el-fire">數字反應挑戰</span>
                      </h2>
                      <p class="text-stone-600 text-lg leading-relaxed font-light">
-                        火行能量主「心」，掌管覺察力與即時反應。在一片數字海洋中，訊號一閃即逝，考驗你當下的判斷與專注。
+                        『心主血，血脈充盈則神清反應快。』<br>火行對應臟腑為心與小腸，與思緒敏捷相關<br>
+                        <strong>透過數字挑戰</strong> ，測試你的反應力！
                      </p>
                      <div class="pt-4 flex flex-col items-center md:items-start">
                          <a href="https://bit.ly/4aFXbPG" target="_blank" class="inline-flex items-center gap-3 bg-stone-800 hover:bg-el-fire text-white px-8 py-4 rounded-full text-lg font-bold tracking-wider transition-all shadow-lg hover:shadow-xl hover:-translate-y-1">
                              <i data-lucide="gamepad-2" class="w-5 h-5"></i>
                              <span>進入遊戲</span>
                          </a>
-                         <p class="mt-3 text-xs md:text-sm text-stone-400 font-medium italic">挑戰你的視覺專注極限！</p>
+                         <p class="mt-3 text-xs md:text-sm text-stone-400 font-medium italic">記得把自己的分數記錄下來哦！</p>
                      </div>
                 </div>
              </div>
@@ -712,7 +713,16 @@
                          mobileMenuBtn.innerHTML = '<i data-lucide="menu"></i>';
                          lucide.createIcons();
                     }
-                    targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+                    
+                    // 手動修正捲動：精確計算目標元素的絕對位置並扣除導覽列高度
+                    const navHeight = navbar.offsetHeight;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
                 }
             };
 
